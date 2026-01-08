@@ -1,0 +1,915 @@
+{
+    "party": "Congress",
+    "city": "Nagpur",
+    "totalCandidates": 152,
+    "activeProfiles": 98,
+    "totalFollowers": 125000,
+    "candidates": [
+        {
+            "prabhag": 1,
+            "seat": "1A",
+            "name": "Rajratna Bansod",
+            "instagram": null
+        },
+        {
+            "prabhag": 1,
+            "seat": "1B",
+            "name": "Sunita Mahale",
+            "instagram": null
+        },
+        {
+            "prabhag": 1,
+            "seat": "1C",
+            "name": "Nirmala Borkar",
+            "instagram": null
+        },
+        {
+            "prabhag": 1,
+            "seat": "1D",
+            "name": "Suresh Jagyasi",
+            "instagram": "https://www.instagram.com/suresh_jagyasi"
+        },
+        {
+            "prabhag": 2,
+            "seat": "2A",
+            "name": "Bhavana Lonare",
+            "instagram": "https://www.instagram.com/bhavna_santosh_lonare"
+        },
+        {
+            "prabhag": 2,
+            "seat": "2B",
+            "name": "Dinesh Yadav",
+            "instagram": "https://www.instagram.com/dineshyadav_1404"
+        },
+        {
+            "prabhag": 2,
+            "seat": "2C",
+            "name": "Sangita Patil",
+            "instagram": null
+        },
+        {
+            "prabhag": 2,
+            "seat": "2D",
+            "name": "Manish Bansod",
+            "instagram": "https://www.instagram.com/manishbansod8"
+        },
+        {
+            "prabhag": 3,
+            "seat": "3A",
+            "name": "Parasram Manwatkar",
+            "instagram": null
+        },
+        {
+            "prabhag": 3,
+            "seat": "3B",
+            "name": "Bhagyashree Wankhede",
+            "instagram": "https://www.instagram.com/bhagyashri_wankhede358"
+        },
+        {
+            "prabhag": 3,
+            "seat": "3C",
+            "name": "Vijaya Hedav",
+            "instagram": "https://www.instagram.com/vijaya_khushal_hedau"
+        },
+        {
+            "prabhag": 3,
+            "seat": "3D",
+            "name": "Shabnam Sheikh",
+            "instagram": null
+        },
+        {
+            "prabhag": 4,
+            "seat": "4A",
+            "name": "Kalpana Goswami",
+            "instagram": "https://www.instagram.com/kalpanagoswamiinc"
+        },
+        {
+            "prabhag": 4,
+            "seat": "4B",
+            "name": "Vipul Mahalle",
+            "instagram": "https://www.instagram.com/vipulmahalle_inc"
+        },
+        {
+            "prabhag": 4,
+            "seat": "4C",
+            "name": "Charu Bhat",
+            "instagram": null
+        },
+        {
+            "prabhag": 4,
+            "seat": "4D",
+            "name": "Mudrika Sharma",
+            "instagram": null
+        },
+        {
+            "prabhag": 5,
+            "seat": "5A",
+            "name": "Anjila Uke",
+            "instagram": null
+        },
+        {
+            "prabhag": 5,
+            "seat": "5B",
+            "name": "Dinesh Yadav",
+            "instagram": "https://www.instagram.com/dineshyadav_1404"
+        },
+        {
+            "prabhag": 5,
+            "seat": "5C",
+            "name": "Pooja Waghmare",
+            "instagram": null
+        },
+        {
+            "prabhag": 5,
+            "seat": "5D",
+            "name": "Ghanshyam Nikhare",
+            "instagram": "https://www.instagram.com/ghanshyamnikhareofficial"
+        },
+        {
+            "prabhag": 6,
+            "seat": "6A",
+            "name": "Rajnigandha Waghmare",
+            "instagram": null
+        },
+        {
+            "prabhag": 6,
+            "seat": "6B",
+            "name": "Shoaib Ansari",
+            "instagram": null
+        },
+        {
+            "prabhag": 6,
+            "seat": "6C",
+            "name": "Kunda Khobragade",
+            "instagram": null
+        },
+        {
+            "prabhag": 6,
+            "seat": "6D",
+            "name": "Mohammed Sheikh",
+            "instagram": null
+        },
+        {
+            "prabhag": 7,
+            "seat": "7A",
+            "name": "Kalpana Dronkar",
+            "instagram": "https://www.instagram.com/kalpanarajadronkar"
+        },
+        {
+            "prabhag": 7,
+            "seat": "7B",
+            "name": "Asif Sheikh",
+            "instagram": "https://www.instagram.com/asifsheikhabc"
+        },
+        {
+            "prabhag": 7,
+            "seat": "7C",
+            "name": "Pooja Sawarkar",
+            "instagram": "https://www.instagram.com/pooja.sawarkar_902"
+        },
+        {
+            "prabhag": 7,
+            "seat": "7D",
+            "name": "Abhishek Shambharkar",
+            "instagram": "https://www.instagram.com/abhishekbshambharkar83"
+        },
+        {
+            "prabhag": 8,
+            "seat": "8A",
+            "name": "Syed Muskan",
+            "instagram": null
+        },
+        {
+            "prabhag": 8,
+            "seat": "8B",
+            "name": "Siraj Ansari",
+            "instagram": null
+        },
+        {
+            "prabhag": 8,
+            "seat": "8C",
+            "name": "Syeda Begam",
+            "instagram": null
+        },
+        {
+            "prabhag": 8,
+            "seat": "8D",
+            "name": "Wasim Khan",
+            "instagram": "https://www.instagram.com/wasimlala5"
+        },
+        {
+            "prabhag": 9,
+            "seat": "9A",
+            "name": "Vivek Nikose",
+            "instagram": "https://www.instagram.com/vivekrameshnikose"
+        },
+        {
+            "prabhag": 9,
+            "seat": "9B",
+            "name": "Pragati Yadav",
+            "instagram": "https://www.instagram.com/rohityadav11"
+        },
+        {
+            "prabhag": 9,
+            "seat": "9C",
+            "name": "Mary Stela Usre",
+            "instagram": null
+        },
+        {
+            "prabhag": 9,
+            "seat": "9D",
+            "name": "Gautam Ambade",
+            "instagram": "https://www.instagram.com/gautamambade"
+        },
+        {
+            "prabhag": 10,
+            "seat": "10A",
+            "name": "Sunita Tabhane",
+            "instagram": null
+        },
+        {
+            "prabhag": 10,
+            "seat": "10B",
+            "name": "Saraswati Salame",
+            "instagram": null
+        },
+        {
+            "prabhag": 10,
+            "seat": "10C",
+            "name": "Seema Daware",
+            "instagram": "https://www.instagram.com/seemaarundaware10"
+        },
+        {
+            "prabhag": 10,
+            "seat": "10D",
+            "name": "Pramod Thakur",
+            "instagram": "https://www.instagram.com/pramodsinghthakurofficial"
+        },
+        {
+            "prabhag": 11,
+            "seat": "11A",
+            "name": "Manjusha Chacharkar",
+            "instagram": "https://www.instagram.com/manjusha_chacherkar_dongre"
+        },
+        {
+            "prabhag": 11,
+            "seat": "11B",
+            "name": "Snehal Thakre",
+            "instagram": null
+        },
+        {
+            "prabhag": 11,
+            "seat": "11C",
+            "name": "Kaimeen Khan",
+            "instagram": "https://www.instagram.com/kaimeen_rizwan_roomvi"
+        },
+        {
+            "prabhag": 11,
+            "seat": "11D",
+            "name": "Shailesh Pande",
+            "instagram": null
+        },
+        {
+            "prabhag": 12,
+            "seat": "12A",
+            "name": "Sukeshini Deshbhratar",
+            "instagram": null
+        },
+        {
+            "prabhag": 12,
+            "seat": "12B",
+            "name": "Omprakash Wadwe",
+            "instagram": null
+        },
+        {
+            "prabhag": 12,
+            "seat": "12C",
+            "name": "Anjali Gwalbanshi",
+            "instagram": null
+        },
+        {
+            "prabhag": 12,
+            "seat": "12D",
+            "name": "Yugalkishor Bidawat",
+            "instagram": "https://www.instagram.com/yugalkvidawat"
+        },
+        {
+            "prabhag": 13,
+            "seat": "13A",
+            "name": "Sunita Tabhane",
+            "instagram": null
+        },
+        {
+            "prabhag": 13,
+            "seat": "13B",
+            "name": "Padma Uike",
+            "instagram": "https://www.instagram.com/padmamanojuikey"
+        },
+        {
+            "prabhag": 13,
+            "seat": "13C",
+            "name": "Durgeshwari Kulmethe",
+            "instagram": "https://www.instagram.com/durgeshwari.khobe"
+        },
+        {
+            "prabhag": 13,
+            "seat": "13D",
+            "name": "Khemchand Patle",
+            "instagram": null
+        },
+        {
+            "prabhag": 14,
+            "seat": "14A",
+            "name": "Sukeshini Dongre",
+            "instagram": null
+        },
+        {
+            "prabhag": 14,
+            "seat": "14B",
+            "name": "Anjana Madavi",
+            "instagram": null
+        },
+        {
+            "prabhag": 14,
+            "seat": "14C",
+            "name": "Ajay Sakhare",
+            "instagram": null
+        },
+        {
+            "prabhag": 14,
+            "seat": "14D",
+            "name": "Abhijeet Jha",
+            "instagram": "https://www.instagram.com/janhit_sarwopari"
+        },
+        {
+            "prabhag": 15,
+            "seat": "15A",
+            "name": "Sandhya Bisen",
+            "instagram": "https://www.instagram.com/sandhyabisen11"
+        },
+        {
+            "prabhag": 15,
+            "seat": "15B",
+            "name": "Sandesh Singalkar",
+            "instagram": "https://www.instagram.com/prabhag___15"
+        },
+        {
+            "prabhag": 15,
+            "seat": "15C",
+            "name": "Vishakha Sharma",
+            "instagram": null
+        },
+        {
+            "prabhag": 15,
+            "seat": "15D",
+            "name": "Pradip Agrawal",
+            "instagram": null
+        },
+        {
+            "prabhag": 16,
+            "seat": "16A",
+            "name": "Sapna Chakole",
+            "instagram": null
+        },
+        {
+            "prabhag": 16,
+            "seat": "16B",
+            "name": "Ashwini Mate",
+            "instagram": "https://www.instagram.com/ashwinimate_"
+        },
+        {
+            "prabhag": 16,
+            "seat": "16C",
+            "name": "Sanjana Deshmukh",
+            "instagram": "https://www.instagram.com/sanjanadeshmukh2021"
+        },
+        {
+            "prabhag": 16,
+            "seat": "16D",
+            "name": "Abhishek Dhawad",
+            "instagram": "https://www.instagram.com/abhishekdhawad"
+        },
+        {
+            "prabhag": 17,
+            "seat": "17A",
+            "name": "Sujata Kombade",
+            "instagram": "https://www.instagram.com/sujatakombade1"
+        },
+        {
+            "prabhag": 17,
+            "seat": "17B",
+            "name": "Suhas Nanwatkar",
+            "instagram": "https://www.instagram.com/suhasnanwatkar"
+        },
+        {
+            "prabhag": 17,
+            "seat": "17C",
+            "name": "Kanchan Chavhan",
+            "instagram": "https://www.instagram.com/kanchavn_chavan_sagar_chavan"
+        },
+        {
+            "prabhag": 17,
+            "seat": "17D",
+            "name": "Yogesh Tiwari",
+            "instagram": "https://www.instagram.com/yogesh_guddu_tiwari"
+        },
+        {
+            "prabhag": 18,
+            "seat": "18A",
+            "name": "Nayan Tarwatkar",
+            "instagram": "https://www.instagram.com/nayan_tarwatkar_political"
+        },
+        {
+            "prabhag": 18,
+            "seat": "18B",
+            "name": "Sharda Lute",
+            "instagram": "https://www.instagram.com/sharda_lute_aman_lute"
+        },
+        {
+            "prabhag": 18,
+            "seat": "18C",
+            "name": "Krutal Akre",
+            "instagram": "https://www.instagram.com/krutalfornmc2026"
+        },
+        {
+            "prabhag": 18,
+            "seat": "18D",
+            "name": "Prashant Bante",
+            "instagram": null
+        },
+        {
+            "prabhag": 19,
+            "seat": "19A",
+            "name": "Shalini Dholke",
+            "instagram": "https://www.instagram.com/shalinidholke1"
+        },
+        {
+            "prabhag": 19,
+            "seat": "19B",
+            "name": "Ravindra Paigwar",
+            "instagram": "https://www.instagram.com/_ravindrapaigwar_"
+        },
+        {
+            "prabhag": 19,
+            "seat": "19C",
+            "name": "Rashmi Qazi",
+            "instagram": "https://www.instagram.com/irfan_qazi07"
+        },
+        {
+            "prabhag": 19,
+            "seat": "19D",
+            "name": "Dipak Patel",
+            "instagram": "https://www.instagram.com/deepakmohanpatel"
+        },
+        {
+            "prabhag": 20,
+            "seat": "20A",
+            "name": "Swapnil Dhoke",
+            "instagram": "https://www.instagram.com/swapnil.dhoke._"
+        },
+        {
+            "prabhag": 20,
+            "seat": "20B",
+            "name": "Jayashree Jambhule",
+            "instagram": null
+        },
+        {
+            "prabhag": 20,
+            "seat": "20C",
+            "name": "Asha Punekar",
+            "instagram": "https://www.instagram.com/aasha_ramesh_punekar_inc"
+        },
+        {
+            "prabhag": 20,
+            "seat": "20D",
+            "name": "Ravi Parate",
+            "instagram": "https://www.instagram.com/ravi_parate.inc"
+        },
+        {
+            "prabhag": 21,
+            "seat": "21A",
+            "name": "Archana Sidam",
+            "instagram": null
+        },
+        {
+            "prabhag": 21,
+            "seat": "21B",
+            "name": "Bhavesh Talmale",
+            "instagram": "https://www.instagram.com/bhaveshtalmale1"
+        },
+        {
+            "prabhag": 21,
+            "seat": "21C",
+            "name": "Rutika Daf",
+            "instagram": "https://www.instagram.com/rutikadaff"
+        },
+        {
+            "prabhag": 21,
+            "seat": "21D",
+            "name": "Manish Umredkar",
+            "instagram": "https://www.instagram.com/manish20umredkar"
+        },
+        {
+            "prabhag": 22,
+            "seat": "22A",
+            "name": "Ashok Dhapodkar",
+            "instagram": "https://www.instagram.com/dhapodkarashok"
+        },
+        {
+            "prabhag": 22,
+            "seat": "22B",
+            "name": "Vandana Ingole",
+            "instagram": null
+        },
+        {
+            "prabhag": 22,
+            "seat": "22C",
+            "name": "Yamini Kondapurkarwar",
+            "instagram": "https://www.instagram.com/yamini_kondapurwar"
+        },
+        {
+            "prabhag": 22,
+            "seat": "22D",
+            "name": "Nana Zode",
+            "instagram": null
+        },
+        {
+            "prabhag": 23,
+            "seat": "23A",
+            "name": "Sagar Lokhanderokar",
+            "instagram": null
+        },
+        {
+            "prabhag": 23,
+            "seat": "23B",
+            "name": "Padma Khandait",
+            "instagram": null
+        },
+        {
+            "prabhag": 23,
+            "seat": "23C",
+            "name": "Preeti Chaurasia",
+            "instagram": null
+        },
+        {
+            "prabhag": 23,
+            "seat": "23D",
+            "name": "Ganesh Humne",
+            "instagram": "https://www.instagram.com/ganeshhumne23"
+        },
+        {
+            "prabhag": 24,
+            "seat": "24A",
+            "name": "Savita Deshlahare",
+            "instagram": null
+        },
+        {
+            "prabhag": 24,
+            "seat": "24B",
+            "name": "Roshan Gaidhane",
+            "instagram": "https://www.instagram.com/roshangaidhane.24"
+        },
+        {
+            "prabhag": 24,
+            "seat": "24C",
+            "name": "Heminbai Banpela",
+            "instagram": null
+        },
+        {
+            "prabhag": 24,
+            "seat": "24D",
+            "name": "Ravinish Pande",
+            "instagram": "https://www.instagram.com/ravinishpanday"
+        },
+        {
+            "prabhag": 25,
+            "seat": "25A",
+            "name": "Nalini Motghare",
+            "instagram": null
+        },
+        {
+            "prabhag": 25,
+            "seat": "25B",
+            "name": "Shrikant Kaikade",
+            "instagram": "https://www.instagram.com/shrikant_kaikade_"
+        },
+        {
+            "prabhag": 25,
+            "seat": "25C",
+            "name": "Manjusha Vaidya",
+            "instagram": "https://www.instagram.com/manjusha_vaidyaa"
+        },
+        {
+            "prabhag": 25,
+            "seat": "25D",
+            "name": "Yashwant Rahangdale",
+            "instagram": "https://www.instagram.com/yashwantrahangdale"
+        },
+        {
+            "prabhag": 26,
+            "seat": "26A",
+            "name": "Shubham Motghare",
+            "instagram": "https://www.instagram.com/shubham_motghare_wathoda"
+        },
+        {
+            "prabhag": 26,
+            "seat": "26B",
+            "name": "Sonu Dhande",
+            "instagram": null
+        },
+        {
+            "prabhag": 26,
+            "seat": "26C",
+            "name": "Chanda Belekar",
+            "instagram": null
+        },
+        {
+            "prabhag": 26,
+            "seat": "26D",
+            "name": "Pravin Narad",
+            "instagram": "https://www.instagram.com/naradpravin"
+        },
+        {
+            "prabhag": 27,
+            "seat": "27A",
+            "name": "Prashant Dhawad",
+            "instagram": "https://www.instagram.com/prashantd_09"
+        },
+        {
+            "prabhag": 27,
+            "seat": "27B",
+            "name": "Seema Dhok",
+            "instagram": "https://www.instagram.com/seemadhok_"
+        },
+        {
+            "prabhag": 27,
+            "seat": "27C",
+            "name": "Kusum Bawankar",
+            "instagram": null
+        },
+        {
+            "prabhag": 27,
+            "seat": "27D",
+            "name": "Sahadeo Gosavi",
+            "instagram": null
+        },
+        {
+            "prabhag": 28,
+            "seat": "28A",
+            "name": "Rahul Abhang",
+            "instagram": "https://www.instagram.com/rahul_abhang01"
+        },
+        {
+            "prabhag": 28,
+            "seat": "28B",
+            "name": "Vaishali Wankhede",
+            "instagram": "https://www.instagram.com/vaishaliwankhede26"
+        },
+        {
+            "prabhag": 28,
+            "seat": "28C",
+            "name": "Ranjana Kadukar",
+            "instagram": "https://www.instagram.com/ranjanakadukar"
+        },
+        {
+            "prabhag": 28,
+            "seat": "28D",
+            "name": "Shravan Sontakke",
+            "instagram": null
+        },
+        {
+            "prabhag": 29,
+            "seat": "29A",
+            "name": "Vishranti Bhoyar",
+            "instagram": null
+        },
+        {
+            "prabhag": 29,
+            "seat": "29B",
+            "name": "Ramchandra Gajbhe",
+            "instagram": null
+        },
+        {
+            "prabhag": 29,
+            "seat": "29C",
+            "name": "Rajni Gurpude",
+            "instagram": null
+        },
+        {
+            "prabhag": 29,
+            "seat": "29D",
+            "name": "Pravin Gaware",
+            "instagram": "https://www.instagram.com/gawrepravin"
+        },
+        {
+            "prabhag": 30,
+            "seat": "30A",
+            "name": "Rita Chandrikapure",
+            "instagram": "https://www.instagram.com/ritanilesh_chandrikapure"
+        },
+        {
+            "prabhag": 30,
+            "seat": "30B",
+            "name": "Sanjay Mahakalkar",
+            "instagram": "https://www.instagram.com/mahakalkarsanjay"
+        },
+        {
+            "prabhag": 30,
+            "seat": "30C",
+            "name": "Seema Raut",
+            "instagram": null
+        },
+        {
+            "prabhag": 30,
+            "seat": "30D",
+            "name": "Amanullah Khan",
+            "instagram": null
+        },
+        {
+            "prabhag": 31,
+            "seat": "31A",
+            "name": "Vandana Meshram",
+            "instagram": "https://www.instagram.com/mershramvandana"
+        },
+        {
+            "prabhag": 31,
+            "seat": "31B",
+            "name": "Satish Holey",
+            "instagram": "https://www.instagram.com/satish_holey"
+        },
+        {
+            "prabhag": 31,
+            "seat": "31C",
+            "name": "Vidya Surkar",
+            "instagram": "https://www.instagram.com/vidya_surkar"
+        },
+        {
+            "prabhag": 31,
+            "seat": "31D",
+            "name": "Shivani Chaudhari",
+            "instagram": null
+        },
+        {
+            "prabhag": 32,
+            "seat": "32A",
+            "name": "Jyoti Dongre",
+            "instagram": "https://www.instagram.com/jyotidongre54"
+        },
+        {
+            "prabhag": 32,
+            "seat": "32B",
+            "name": "Vilas Karangale",
+            "instagram": "https://www.instagram.com/_vilas_karangale_73"
+        },
+        {
+            "prabhag": 32,
+            "seat": "32C",
+            "name": "Pushpa Deshmukh",
+            "instagram": null
+        },
+        {
+            "prabhag": 32,
+            "seat": "32D",
+            "name": "Vishweshwar Ahirkar",
+            "instagram": "https://www.instagram.com/iivishweshwarahirkar"
+        },
+        {
+            "prabhag": 33,
+            "seat": "33A",
+            "name": "Machhindra Salve",
+            "instagram": "https://www.instagram.com/machchhindrasawle"
+        },
+        {
+            "prabhag": 33,
+            "seat": "33B",
+            "name": "Manoj Gawande",
+            "instagram": "https://www.instagram.com/manojgawande.13"
+        },
+        {
+            "prabhag": 33,
+            "seat": "33C",
+            "name": "Sheela Tarale",
+            "instagram": null
+        },
+        {
+            "prabhag": 33,
+            "seat": "33D",
+            "name": "Roshni Chandelalatkar",
+            "instagram": null
+        },
+        {
+            "prabhag": 34,
+            "seat": "34A",
+            "name": "Sushant Lokhande",
+            "instagram": "https://www.instagram.com/sushant.lokhande.96"
+        },
+        {
+            "prabhag": 34,
+            "seat": "34B",
+            "name": "Swati Sandekar",
+            "instagram": "https://www.instagram.com/sandekarswati"
+        },
+        {
+            "prabhag": 34,
+            "seat": "34C",
+            "name": "Anushka Wankhede",
+            "instagram": "https://www.instagram.com/anushkawankhede"
+        },
+        {
+            "prabhag": 34,
+            "seat": "34D",
+            "name": "Kanthiram Shende",
+            "instagram": null
+        },
+        {
+            "prabhag": 35,
+            "seat": "35A",
+            "name": "Gautam Ganar",
+            "instagram": "https://www.instagram.com/gautamganar1980"
+        },
+        {
+            "prabhag": 35,
+            "seat": "35B",
+            "name": "Anuja Sharma",
+            "instagram": "https://www.instagram.com/anujasharma354"
+        },
+        {
+            "prabhag": 35,
+            "seat": "35C",
+            "name": "Ankita Mohod",
+            "instagram": null
+        },
+        {
+            "prabhag": 35,
+            "seat": "35D",
+            "name": "Kumar Borkute",
+            "instagram": "https://www.instagram.com/kumar_borkute_official"
+        },
+        {
+            "prabhag": 36,
+            "seat": "36A",
+            "name": "Vinod Patil",
+            "instagram": null
+        },
+        {
+            "prabhag": 36,
+            "seat": "36B",
+            "name": "Rekha Barahate",
+            "instagram": null
+        },
+        {
+            "prabhag": 36,
+            "seat": "36C",
+            "name": "Sanjivani Mengare",
+            "instagram": "https://www.instagram.com/sanjivanimenghare"
+        },
+        {
+            "prabhag": 36,
+            "seat": "36D",
+            "name": "Purushottam Parmore",
+            "instagram": null
+        },
+        {
+            "prabhag": 37,
+            "seat": "37A",
+            "name": "Smita Somkuwar",
+            "instagram": null
+        },
+        {
+            "prabhag": 37,
+            "seat": "37B",
+            "name": "Mangesh Kamone",
+            "instagram": null
+        },
+        {
+            "prabhag": 37,
+            "seat": "37C",
+            "name": "Minakshi Gatpane",
+            "instagram": null
+        },
+        {
+            "prabhag": 37,
+            "seat": "37D",
+            "name": "Prashant Kapse",
+            "instagram": "https://www.instagram.com/prashant.kapse01"
+        },
+        {
+            "prabhag": 38,
+            "seat": "38A",
+            "name": "Shailesh Dorle",
+            "instagram": null
+        },
+        {
+            "prabhag": 38,
+            "seat": "38B",
+            "name": "Kumudini Gudadhe",
+            "instagram": "https://www.instagram.com/kumudgudadhe"
+        },
+        {
+            "prabhag": 38,
+            "seat": "38C",
+            "name": "Anita Larokar",
+            "instagram": "https://www.instagram.com/anita.larokar"
+        }
+    ]
+}

@@ -1,0 +1,206 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  /* Updated to new brand colors: #000629, #3377FF, #FFCF45, #72E9CD, #E1F2FE */
+  --brand-navy: #000629;
+  --brand-blue: #3377ff;
+  --brand-gold: #ffcf45;
+  --brand-teal: #72e9cd;
+  --brand-light-blue: #e1f2fe;
+  --paper-white: #ffffff;
+
+  --background: #ffffff;
+  --foreground: #000629;
+  --card: #ffffff;
+  --card-foreground: #000629;
+  --popover: #ffffff;
+  --popover-foreground: #000629;
+  --primary: #3377ff;
+  --primary-foreground: #ffffff;
+  --secondary: #ffcf45;
+  --secondary-foreground: #000629;
+  --muted: #e1f2fe;
+  --muted-foreground: #000629;
+  --accent: #72e9cd;
+  --accent-foreground: #000629;
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: #ffffff;
+  --border: #e1f2fe;
+  --input: #e1f2fe;
+  --ring: #3377ff;
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: #000629;
+  --foreground: #ffffff;
+  --card: #000629;
+  --card-foreground: #ffffff;
+  --popover: #000629;
+  --popover-foreground: #ffffff;
+  --primary: #3377ff;
+  --primary-foreground: #ffffff;
+  --secondary: #ffcf45;
+  --secondary-foreground: #000629;
+  --muted: #000629;
+  --muted-foreground: #e1f2fe;
+  --accent: #72e9cd;
+  --accent-foreground: #000629;
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: #000629;
+  --input: #000629;
+  --ring: #3377ff;
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+/* Added custom animations for homepage sections */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes countUp {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes goldGlow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(255, 209, 102, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 30px rgba(255, 209, 102, 0.6);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-count-up {
+  animation: countUp 0.3s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-gold-glow {
+  animation: goldGlow 2s ease-in-out infinite;
+}
+
+/* Stagger animation delays for sequential reveals */
+.stagger-1 {
+  animation-delay: 0.1s;
+}
+
+.stagger-2 {
+  animation-delay: 0.2s;
+}
+
+.stagger-3 {
+  animation-delay: 0.3s;
+}
+
+.stagger-4 {
+  animation-delay: 0.4s;
+}
+
+.stagger-5 {
+  animation-delay: 0.5s;
+}
+
+.stagger-6 {
+  animation-delay: 0.6s;
+}
+
+/* Glass blur effect for sticky header */
+.glass-blur {
+  backdrop-filter: blur(8px);
+  /* Updated glass blur background to use brand navy with transparency */
+  background-color: rgba(0, 6, 41, 0.9);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
