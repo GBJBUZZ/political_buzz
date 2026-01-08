@@ -22,7 +22,7 @@ export function Header() {
     { label: "Home", href: "/" },
     { label: "Services", href: "/services" },
     { label: "Packages", href: "/packages" },
-    { label: "Social Connect", href: "/social-connect" },
+    { label: "Political Connect", href: "/political-connect" },
     { label: "Success Stories", href: "/success-stories" },
     { label: "Contact", href: "/contact" },
   ]

@@ -23,8 +23,8 @@ model State {
   code      String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  country   Country  @relation(fields: [countryId], references: [id])
   cities    City[]
+  country   Country  @relation(fields: [countryId], references: [id])
 
   @@index([countryId])
 }
@@ -33,7 +33,7 @@ model City {
   id        String   @id @default(cuid())
   stateId   String
   name      String
-  type      String   // municipal_corp, mahanagar_palika
+  type      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   state     State    @relation(fields: [stateId], references: [id])
@@ -43,70 +43,71 @@ model City {
 }
 
 model Ward {
-  id             String          @id @default(cuid())
-  cityId         String
-  wardNumber     Int
-  name           String
+  id              String           @id @default(cuid())
+  cityId          String
+  wardNumber      Int
+  name            String
   boundaryGeoJson String?
-  population     Int?
-  createdAt      DateTime        @default(now())
-  updatedAt      DateTime        @updatedAt
-  city           City            @relation(fields: [cityId], references: [id])
+  population      Int?
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  issues          Issue[]
   representatives Representative[]
-  users          User[]
-  issues         Issue[]
+  users           User[]
+  city            City             @relation(fields: [cityId], references: [id])
 
   @@unique([cityId, wardNumber])
   @@index([cityId])
 }
 
 model Party {
-  id             String          @id @default(cuid())
-  name           String
-  abbreviation   String          @unique
-  symbol         String?
-  color          String?
-  foundedDate    DateTime?
-  createdAt      DateTime        @default(now())
-  updatedAt      DateTime        @updatedAt
+  id              String           @id @default(cuid())
+  name            String
+  abbreviation    String           @unique
+  symbol          String?
+  color           String?
+  foundedDate     DateTime?
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
   representatives Representative[]
 }
 
 model User {
-  id        String   @id @default(cuid())
-  phone     String   @unique
-  name      String?
-  email     String?  @unique
-  role      String   @default("citizen") // citizen, representative, party_admin, super_admin
-  wardId    String?
-  verified  Boolean  @default(false)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  ward      Ward?    @relation(fields: [wardId], references: [id])
+  id             String          @id @default(cuid())
+  phone          String          @unique
+  name           String?
+  email          String?         @unique
+  role           String          @default("citizen")
+  password       String?
+  wardId         String?
+  verified       Boolean         @default(false)
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  issues         Issue[]
+  issueUpvotes   IssueUpvote[]
   representative Representative?
-  issues    Issue[]
-  issueUpvotes IssueUpvote[]
+  ward           Ward?           @relation(fields: [wardId], references: [id])
 
   @@index([wardId])
   @@index([phone])
 }
 
 model Representative {
-  id          String             @id @default(cuid())
-  userId      String             @unique
-  partyId     String
-  wardId      String
-  position    String             // corporator, mla, mp
-  verified    Boolean            @default(false)
-  termStart   DateTime?
-  termEnd     DateTime?
-  createdAt   DateTime           @default(now())
-  updatedAt   DateTime           @updatedAt
-  user        User               @relation(fields: [userId], references: [id])
-  party       Party              @relation(fields: [partyId], references: [id])
-  ward        Ward               @relation(fields: [wardId], references: [id])
-  socialProfiles SocialProfile[]
+  id             String          @id @default(cuid())
+  userId         String          @unique
+  partyId        String
+  wardId         String
+  position       String
+  verified       Boolean         @default(false)
+  termStart      DateTime?
+  termEnd        DateTime?
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
   issueResponses IssueResponse[]
+  ward           Ward            @relation(fields: [wardId], references: [id])
+  party          Party           @relation(fields: [partyId], references: [id])
+  user           User            @relation(fields: [userId], references: [id])
+  socialProfiles SocialProfile[]
 
   @@index([partyId])
   @@index([wardId])
@@ -115,7 +116,7 @@ model Representative {
 model SocialProfile {
   id               String         @id @default(cuid())
   representativeId String
-  platform         String         // instagram, facebook, twitter
+  platform         String
   handle           String
   followers        Int?
   verified         Boolean        @default(false)
@@ -129,20 +130,20 @@ model SocialProfile {
 }
 
 model Issue {
-  id          String          @id @default(cuid())
-  userId      String
-  wardId      String
-  title       String
-  description String
-  category    String          // roads, water, electricity, sanitation, etc.
-  status      String          @default("pending") // pending, acknowledged, in_progress, resolved, rejected
-  mediaUrls   String          // SQLite doesn't support string arrays, storing as JSON string or CSV
-  upvotes     Int             @default(0)
-  createdAt   DateTime        @default(now())
-  updatedAt   DateTime        @updatedAt
-  user        User            @relation(fields: [userId], references: [id])
-  ward        Ward            @relation(fields: [wardId], references: [id])
-  responses   IssueResponse[]
+  id           String          @id @default(cuid())
+  userId       String
+  wardId       String
+  title        String
+  description  String
+  category     String
+  status       String          @default("pending")
+  mediaUrls    String
+  upvotes      Int             @default(0)
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+  ward         Ward            @relation(fields: [wardId], references: [id])
+  user         User            @relation(fields: [userId], references: [id])
+  responses    IssueResponse[]
   issueUpvotes IssueUpvote[]
 
   @@index([wardId])
@@ -159,8 +160,8 @@ model IssueResponse {
   statusUpdate     String?
   createdAt        DateTime       @default(now())
   updatedAt        DateTime       @updatedAt
-  issue            Issue          @relation(fields: [issueId], references: [id])
   representative   Representative @relation(fields: [representativeId], references: [id])
+  issue            Issue          @relation(fields: [issueId], references: [id])
 
   @@index([issueId])
   @@index([representativeId])
@@ -171,8 +172,8 @@ model IssueUpvote {
   issueId   String
   userId    String
   createdAt DateTime @default(now())
-  issue     Issue    @relation(fields: [issueId], references: [id])
   user      User     @relation(fields: [userId], references: [id])
+  issue     Issue    @relation(fields: [issueId], references: [id])
 
   @@unique([issueId, userId])
   @@index([issueId])
