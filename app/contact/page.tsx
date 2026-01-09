@@ -1,225 +1,118 @@
-import type { Metadata } from "next"
+"use client"
+
+import { Phone, Mail, MapPin, Send, MessageSquare, Clock, Globe } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Phone, Mail, MapPin, Clock } from "lucide-react"
-
-export const metadata: Metadata = {
-  title: "Contact Political BuZZ | Request Campaign Proposal - Call +917058253695",
-  description:
-    "Contact Political BuZZ for professional political campaign services. Call +917058253695 or email campaign@politicalbuzzindia.in. Based in Nagpur, serving all of Maharashtra.",
-  keywords: "contact political buzz, campaign consultation, Nagpur political agency, election campaign inquiry",
-}
+import { Label } from "@/components/ui/label"
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-[#000629]">
+    <div className="min-h-screen bg-[#F8FAFC]">
+
       {/* Hero Section */}
-      <section className="relative py-24 overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: "url('/blue-gradient-background.jpg')",
-            backgroundSize: "cover",
-          }}
-        />
-        <div className="container mx-auto px-4 max-w-[1200px] relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="font-heading font-bold text-5xl md:text-6xl text-white mb-6 leading-tight">
-              Let's Build Your <span className="text-[#FFCF45]">Winning Campaign</span>
-            </h1>
-            <p className="text-xl text-white/80 font-sans leading-relaxed">
-              Ready to start? Reach out for a free consultation and campaign proposal.
-            </p>
-          </div>
+      <section className="pt-32 pb-20 bg-[#000629] relative overflow-hidden">
+        <div className="container mx-auto px-4 relative z-10 text-center">
+          <h1 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight">Connect with the Hub</h1>
+          <p className="text-blue-200/60 text-lg max-w-2xl mx-auto font-bold uppercase text-[10px] tracking-[0.4em]">Expert Campaign Advisory for Nagpur 2026</p>
         </div>
+        {/* Decorative background */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-600/10 via-transparent to-transparent" />
       </section>
 
-      {/* Contact Form & Info */}
-      <section className="py-20 bg-white">
+      <section className="py-24">
         <div className="container mx-auto px-4 max-w-[1200px]">
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+
+            {/* Contact Info */}
+            <div className="lg:col-span-5 space-y-12">
+              <div>
+                <h2 className="text-3xl font-black text-slate-900 mb-6">Let's build your<br />winning strategy.</h2>
+                <p className="text-slate-500 font-medium leading-relaxed">Whether you're a first-time candidate or an established party leader, our team is ready to deploy the technology and strategy you need to win Nagpur 2026.</p>
+              </div>
+
+              <div className="space-y-8">
+                <div className="flex gap-6 items-start group">
+                  <div className="w-12 h-12 bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                    <Phone className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Direct Line</p>
+                    <p className="text-lg font-black text-slate-900">+91 70201 07390</p>
+                  </div>
+                </div>
+
+                <div className="flex gap-6 items-start group">
+                  <div className="w-12 h-12 bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                    <Mail className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Official Inquiry</p>
+                    <p className="text-lg font-black text-slate-900">connect@politicalbuzz.in</p>
+                  </div>
+                </div>
+
+                <div className="flex gap-6 items-start group">
+                  <div className="w-12 h-12 bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                    <MapPin className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Nagpur HQ</p>
+                    <p className="text-lg font-black text-slate-900 leading-snug">Civil Lines, Opposite NMC Office<br />Nagpur, Maharashtra 440001</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-8 bg-blue-600 rounded-[2.5rem] text-white relative overflow-hidden shadow-2xl shadow-blue-500/20">
+                <div className="relative z-10">
+                  <div className="flex items-center gap-2 mb-4">
+                    <Clock className="h-4 w-4 text-blue-200" />
+                    <span className="text-[10px] font-black uppercase tracking-widest text-blue-100">War Room Hours</span>
+                  </div>
+                  <p className="text-xl font-black mb-1">Open 24/7 during Elections</p>
+                  <p className="text-blue-200/60 text-xs font-bold uppercase tracking-widest italic">Always on duty for your victory</p>
+                </div>
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -mr-16 -mt-16" />
+              </div>
+            </div>
+
             {/* Contact Form */}
-            <div>
-              <h2 className="font-heading font-bold text-3xl text-[#000629] mb-6">Request Campaign Proposal</h2>
-              <form className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="firstName" className="block text-sm font-ui font-semibold text-gray-700 mb-2">
-                      First Name *
-                    </label>
-                    <Input id="firstName" placeholder="Enter your first name" required />
+            <div className="lg:col-col-span-1 hidden lg:block border-l border-slate-200" />
+
+            <div className="lg:col-span-6">
+              <div className="bg-white rounded-[3rem] p-10 shadow-xl shadow-slate-200/50 border border-slate-100">
+                <form className="space-y-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-3">
+                      <Label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Full Name</Label>
+                      <Input placeholder="John Doe" className="h-14 rounded-2xl border-slate-200" />
+                    </div>
+                    <div className="space-y-3">
+                      <Label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Designation / Role</Label>
+                      <Input placeholder="Candidate / Party Head" className="h-14 rounded-2xl border-slate-200" />
+                    </div>
                   </div>
-                  <div>
-                    <label htmlFor="lastName" className="block text-sm font-ui font-semibold text-gray-700 mb-2">
-                      Last Name *
-                    </label>
-                    <Input id="lastName" placeholder="Enter your last name" required />
+
+                  <div className="space-y-3">
+                    <Label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Official Email</Label>
+                    <Input placeholder="you@leader.com" className="h-14 rounded-2xl border-slate-200" />
                   </div>
-                </div>
 
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-ui font-semibold text-gray-700 mb-2">
-                    Phone Number *
-                  </label>
-                  <Input id="phone" type="tel" placeholder="+91 XXXXX XXXXX" required />
-                </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-sm font-ui font-semibold text-gray-700 mb-2">
-                    Email Address *
-                  </label>
-                  <Input id="email" type="email" placeholder="your@email.com" required />
-                </div>
-
-                <div>
-                  <label htmlFor="electionType" className="block text-sm font-ui font-semibold text-gray-700 mb-2">
-                    Election Type *
-                  </label>
-                  <select
-                    id="electionType"
-                    className="w-full h-10 px-3 rounded-md border border-gray-300 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#3377FF]"
-                    required
-                  >
-                    <option value="">Select election type</option>
-                    <option value="mla">MLA (State Assembly)</option>
-                    <option value="mp">MP (Parliament)</option>
-                    <option value="municipal">Municipal Corporation</option>
-                    <option value="nagarParishad">Nagar Parishad</option>
-                    <option value="gramPanchayat">Gram Panchayat</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="constituency" className="block text-sm font-ui font-semibold text-gray-700 mb-2">
-                    Constituency / Ward
-                  </label>
-                  <Input id="constituency" placeholder="Enter your constituency or ward" />
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-ui font-semibold text-gray-700 mb-2">
-                    Message / Requirements
-                  </label>
-                  <Textarea
-                    id="message"
-                    placeholder="Tell us about your campaign needs, timeline, and any specific requirements..."
-                    rows={5}
-                  />
-                </div>
-
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full bg-[#3377FF] hover:bg-[#3377FF]/90 text-white font-ui font-semibold h-12"
-                >
-                  Submit Request
-                </Button>
-              </form>
-            </div>
-
-            {/* Contact Information */}
-            <div>
-              <h2 className="font-heading font-bold text-3xl text-[#000629] mb-6">Get In Touch</h2>
-
-              <div className="space-y-6 mb-12">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-[#3377FF] rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Phone className="h-6 w-6 text-white" />
+                  <div className="space-y-3">
+                    <Label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Constituency / Ward</Label>
+                    <Input placeholder="Prabhag No. (1-38)" className="h-14 rounded-2xl border-slate-200" />
                   </div>
-                  <div>
-                    <h3 className="font-heading font-bold text-lg text-[#000629] mb-1">Phone</h3>
-                    <a
-                      href="tel:+917058253695"
-                      className="text-[#3377FF] font-sans hover:underline text-lg font-semibold"
-                    >
-                      +91 7058253695
-                    </a>
-                  </div>
-                </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-[#FFCF45] rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Mail className="h-6 w-6 text-[#000629]" />
+                  <div className="space-y-3">
+                    <Label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Campaign Goal / Message</Label>
+                    <Textarea placeholder="How can we assist your campaign?" className="min-h-[150px] rounded-2xl border-slate-200" />
                   </div>
-                  <div>
-                    <h3 className="font-heading font-bold text-lg text-[#000629] mb-1">Email</h3>
-                    <a
-                      href="mailto:campaign@politicalbuzzindia.in"
-                      className="text-[#3377FF] font-sans hover:underline"
-                    >
-                      campaign@politicalbuzzindia.in
-                    </a>
-                  </div>
-                </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-[#72E9CD] rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MapPin className="h-6 w-6 text-[#000629]" />
-                  </div>
-                  <div>
-                    <h3 className="font-heading font-bold text-lg text-[#000629] mb-1">Location</h3>
-                    <p className="text-gray-600 font-sans">
-                      Nagpur, Maharashtra
-                      <br />
-                      Serving all of Maharashtra
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-[#E1F2FE] rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Clock className="h-6 w-6 text-[#3377FF]" />
-                  </div>
-                  <div>
-                    <h3 className="font-heading font-bold text-lg text-[#000629] mb-1">Business Hours</h3>
-                    <p className="text-gray-600 font-sans">
-                      Monday - Saturday: 9:00 AM - 8:00 PM
-                      <br />
-                      Sunday: By Appointment
-                      <br />
-                      <span className="text-[#3377FF] font-semibold">24/7 during campaign season</span>
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Social Media */}
-              <div className="bg-[#E1F2FE] rounded-xl p-6">
-                <h3 className="font-heading font-bold text-xl text-[#000629] mb-4">Follow Us</h3>
-                <div className="flex flex-wrap gap-3">
-                  {[
-                    { name: "Instagram", handle: "@politicalbuzz.india" },
-                    { name: "Facebook", handle: "@politicalbuzz.india" },
-                    { name: "LinkedIn", handle: "Political BuZZ" },
-                    { name: "Twitter", handle: "@politicalbuzz" },
-                    { name: "YouTube", handle: "Political BuZZ" },
-                  ].map((social, index) => (
-                    <a
-                      key={index}
-                      href="#"
-                      className="inline-block bg-white px-4 py-2 rounded-lg text-sm font-ui font-semibold text-[#3377FF] hover:bg-[#3377FF] hover:text-white transition-colors"
-                    >
-                      {social.name}
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Map Section */}
-      <section className="py-20 bg-[#0F1724]">
-        <div className="container mx-auto px-4 max-w-[1200px]">
-          <div className="bg-white rounded-2xl overflow-hidden shadow-2xl">
-            <div className="h-[400px] bg-gradient-to-br from-[#3377FF] to-[#000629] flex items-center justify-center">
-              <div className="text-center text-white">
-                <MapPin className="h-16 w-16 mx-auto mb-4 text-[#FFCF45]" />
-                <p className="font-heading font-bold text-2xl">Nagpur, Maharashtra</p>
-                <p className="text-white/70 font-sans mt-2">Serving all of Maharashtra</p>
+                  <Button className="w-full h-16 bg-slate-900 hover:bg-black text-white rounded-2xl font-black text-sm uppercase tracking-widest shadow-xl shadow-slate-900/20 group transition-all">
+                    SEND CAMPAIGN INQUIRY
+                    <Send className="ml-2 h-4 w-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  </Button>
+                </form>
               </div>
             </div>
           </div>

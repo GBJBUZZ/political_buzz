@@ -1,204 +1,119 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Award, Target, Users, TrendingUp, Shield, Zap } from "lucide-react"
-import Link from "next/link"
+"use client"
+
+import { Target, Users, TrendingUp, ShieldCheck, Award, Rocket, Globe } from "lucide-react"
+import { Header } from "@/components/header"
+import { Footer } from "@/components/footer"
+import Image from "next/image"
 
 export default function AboutPage() {
-  const timeline = [
-    { year: "2008", event: "Founded GBJ BUZZ - Started political consulting journey" },
-    { year: "2012", event: "Expanded to digital campaign management" },
-    { year: "2015", event: "Launched GBJ Command Platform software" },
-    { year: "2018", event: "Achieved 250+ successful campaigns milestone" },
-    { year: "2020", event: "Introduced AI-powered voter analytics" },
-    { year: "2023", event: "Launched Political BuZZ division" },
-    { year: "2025", event: "500+ campaigns won, international recognition" },
-  ]
-
-  const values = [
-    {
-      icon: Shield,
-      title: "Ethics & Compliance",
-      description: "Strict adherence to ECI guidelines and DPDP data protection standards",
-    },
-    {
-      icon: Target,
-      title: "Data-Driven Decisions",
-      description: "Every strategy backed by research, analytics, and proven methodologies",
-    },
-    {
-      icon: Users,
-      title: "People-First Approach",
-      description: "Campaigns that connect with voters on human level, not just data points",
-    },
-    {
-      icon: Zap,
-      title: "Innovation & Technology",
-      description: "Cutting-edge AI, software, and digital tools for modern campaigns",
-    },
-  ]
-
-  const metrics = [
-    { value: "500+", label: "Campaigns Won", icon: Award },
-    { value: "17 Years", label: "Experience", icon: TrendingUp },
-    { value: "35+", label: "Ward Campaigns", icon: Target },
-    { value: "250+", label: "Media Platforms", icon: Users },
-  ]
-
   return (
-    <main className="min-h-screen pt-20">
+    <div className="min-h-screen bg-white">
+      <Header />
+
       {/* Hero Section */}
-      <section className="py-24 bg-gradient-to-br from-secondary via-secondary to-primary/20 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-[url('/india-democracy-voting-election-history.jpg')] bg-cover bg-center" />
-        </div>
+      <section className="pt-40 pb-24 bg-[#000629] text-white relative overflow-hidden">
+        <div className="container mx-auto px-4 max-w-[1200px] relative z-10 text-center">
+          <h1 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter">Beyond Data.<br />Toward Victory.</h1>
+          <p className="text-blue-200/60 text-lg max-w-2xl mx-auto font-bold uppercase text-[10px] tracking-[0.5em] mb-12">The Intelligence Engine for Nagpur Elections 2026</p>
 
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center animate-in fade-in slide-in-from-bottom-6 duration-1000">
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-              About <span className="text-primary">Political BuZZ</span>
-            </h1>
-            <p className="text-xl text-gray-300 leading-relaxed">
-              India's first data-driven political strategy firm, powered by GBJ BUZZ Pvt Ltd. Since 2008, we've been
-              transforming how elections are won through intelligence, innovation, and integrity.
-            </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+            <div className="text-center">
+              <div className="text-4xl font-black text-blue-400 mb-1">10+</div>
+              <div className="text-[10px] font-black uppercase tracking-widest text-blue-200/40">Elections Won</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-black text-blue-400 mb-1">38</div>
+              <div className="text-[10px] font-black uppercase tracking-widest text-blue-200/40">Nagpur Wards</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-black text-blue-400 mb-1">1M+</div>
+              <div className="text-[10px] font-black uppercase tracking-widest text-blue-200/40">Voter Reach</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-black text-blue-400 mb-1">24/7</div>
+              <div className="text-[10px] font-black uppercase tracking-widest text-blue-200/40">War Room Support</div>
+            </div>
           </div>
         </div>
+        {/* Decorative background blur */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px] -mr-48 -mt-48" />
       </section>
 
-      {/* Impact Metrics */}
-      <section className="py-16 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {metrics.map((metric, index) => {
-              const Icon = metric.icon
-              return (
-                <Card
-                  key={index}
-                  className="text-center border-primary/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 animate-in fade-in zoom-in-50 duration-700"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <CardContent className="p-6">
-                    <Icon className="h-10 w-10 text-primary mx-auto mb-3" />
-                    <div className="text-4xl font-bold text-primary mb-2">{metric.value}</div>
-                    <div className="text-sm text-muted-foreground">{metric.label}</div>
-                  </CardContent>
-                </Card>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline */}
-      <section className="py-24 bg-secondary">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-white text-center mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
-            Our <span className="text-primary">Journey</span>
-          </h2>
-
-          <div className="max-w-4xl mx-auto">
-            <div className="relative">
-              {/* Timeline Line */}
-              <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-primary/30" />
-
-              {timeline.map((item, index) => (
-                <div
-                  key={index}
-                  className={`relative mb-12 animate-in fade-in slide-in-from-${index % 2 === 0 ? "left" : "right"}-8 duration-700`}
-                  style={{ animationDelay: `${index * 150}ms` }}
-                >
-                  <div
-                    className={`flex items-center ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} flex-row`}
-                  >
-                    <div className="flex-1 md:text-right md:pr-8 pl-16 md:pl-0">
-                      {index % 2 === 0 && (
-                        <Card className="inline-block bg-card/50 backdrop-blur-sm border-primary/20">
-                          <CardContent className="p-4">
-                            <div className="font-bold text-primary mb-1">{item.year}</div>
-                            <div className="text-sm text-foreground">{item.event}</div>
-                          </CardContent>
-                        </Card>
-                      )}
-                    </div>
-
-                    <div className="absolute left-8 md:left-1/2 w-4 h-4 bg-primary rounded-full border-4 border-secondary transform -translate-x-1/2" />
-
-                    <div className="flex-1 md:pl-8 pl-16 md:text-left">
-                      {index % 2 !== 0 && (
-                        <Card className="inline-block bg-card/50 backdrop-blur-sm border-primary/20">
-                          <CardContent className="p-4">
-                            <div className="font-bold text-primary mb-1">{item.year}</div>
-                            <div className="text-sm text-foreground">{item.event}</div>
-                          </CardContent>
-                        </Card>
-                      )}
-                    </div>
-                  </div>
+      {/* Mission Section */}
+      <section className="py-24">
+        <div className="container mx-auto px-4 max-w-[1200px]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div>
+              <p className="text-blue-600 font-black uppercase text-[10px] tracking-[0.3em] mb-4 italic">Our Core Mission</p>
+              <h2 className="text-4xl font-black text-slate-900 mb-8 leading-tight">Empowering Leaders.<br />Engaging Citizens.</h2>
+              <div className="space-y-6 text-slate-500 font-medium leading-relaxed">
+                <p>Political Buzz was born from a simple realization: the gap between citizens and their representatives in Nagpur was widening. Decisions were being made without real-time data, and issues were lingering without accountability.</p>
+                <p>In 2024, we launched our intelligence platform to bridge this gap. By combining field-level research with high-performance digital tools, we transform how campaigns are fought and how wards are managed.</p>
+                <p>Our technology doesn't just count votes; it maps aspirations, tracks resolutions, and builds lasting trust between leaders and their constituencies.</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-6">
+              <div className="space-y-6 mt-12">
+                <div className="bg-slate-50 p-8 rounded-[2rem] border border-slate-100">
+                  <Target className="h-10 w-10 text-blue-600 mb-4" />
+                  <h3 className="font-black text-slate-900 mb-2">Precision</h3>
+                  <p className="text-xs text-slate-400 font-bold uppercase tracking-wide">Booth-level intelligence for surgical targeting.</p>
                 </div>
-              ))}
+                <div className="bg-slate-50 p-8 rounded-[2rem] border border-slate-100">
+                  <ShieldCheck className="h-10 w-10 text-emerald-600 mb-4" />
+                  <h3 className="font-black text-slate-900 mb-2">Integrity</h3>
+                  <p className="text-xs text-slate-400 font-bold uppercase tracking-wide">Verified claims and authentic voter engagement.</p>
+                </div>
+              </div>
+              <div className="space-y-6">
+                <div className="bg-slate-50 p-8 rounded-[2rem] border border-slate-100">
+                  <TrendingUp className="h-10 w-10 text-orange-600 mb-4" />
+                  <h3 className="font-black text-slate-900 mb-2">Growth</h3>
+                  <p className="text-xs text-slate-400 font-bold uppercase tracking-wide">Continuous reach expansion across digital platforms.</p>
+                </div>
+                <div className="bg-slate-50 p-8 rounded-[2rem] border border-slate-100">
+                  <Rocket className="h-10 w-10 text-purple-600 mb-4" />
+                  <h3 className="font-black text-slate-900 mb-2">Impact</h3>
+                  <p className="text-xs text-slate-400 font-bold uppercase tracking-wide">Real-time issue resolution and ward health visibility.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Core Values */}
-      <section className="py-24 bg-background">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-foreground text-center mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
-            Our <span className="text-primary">Core Values</span>
-          </h2>
+      {/* Strategic Pillars */}
+      <section className="py-24 bg-slate-900 text-white rounded-[4rem] mx-4 mb-24 overflow-hidden relative">
+        <div className="container mx-auto px-4 max-w-[1200px] relative z-10">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl font-black mb-4">The Nagpur 2026 Strategy</h2>
+            <p className="text-blue-200/40 font-bold uppercase text-[10px] tracking-[0.4em]">Our Triple-Layer Model for Electoral Success</p>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => {
-              const Icon = value.icon
-              return (
-                <Card
-                  key={index}
-                  className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-primary/20 animate-in fade-in zoom-in-50 duration-700"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <CardContent className="p-6 text-center">
-                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                      <Icon className="h-8 w-8 text-primary" />
-                    </div>
-                    <h3 className="font-bold text-lg mb-3 text-foreground">{value.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{value.description}</p>
-                  </CardContent>
-                </Card>
-              )
-            })}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div className="group">
+              <div className="text-6xl font-black text-blue-500/20 mb-6 group-hover:text-blue-500/40 transition-colors">01</div>
+              <h4 className="text-xl font-black mb-4">Digital Dominance</h4>
+              <p className="text-slate-400 text-sm leading-relaxed">Securing your narrative across Instagram, WhatsApp, and Facebook. We build the "Digital Wall" that protects your reputation and amplifies your message to every voter's smartphone.</p>
+            </div>
+            <div className="group">
+              <div className="text-6xl font-black text-blue-500/20 mb-6 group-hover:text-blue-500/40 transition-colors">02</div>
+              <h4 className="text-xl font-black mb-4">BOOTH Intelligence</h4>
+              <p className="text-slate-400 text-sm leading-relaxed">Winning ward by ward, booth by booth. Our GIS-mapped voter database allows you to know exactly who to talk to, when, and with what message.</p>
+            </div>
+            <div className="group">
+              <div className="text-6xl font-black text-blue-500/20 mb-6 group-hover:text-blue-500/40 transition-colors">03</div>
+              <h4 className="text-xl font-black mb-4">Last-Mile Execution</h4>
+              <p className="text-slate-400 text-sm leading-relaxed">Converting sentiment into votes. Our high-precision "Get Out The Vote" (GOTV) systems ensure that your supporters actually reach the polling station on election day.</p>
+            </div>
           </div>
         </div>
+
+        {/* Background Pattern */}
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10" />
       </section>
 
-      {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-primary to-primary/80 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-[url('/india-map-pattern.jpg')] bg-cover bg-center" />
-        </div>
-
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <h2 className="text-4xl font-bold text-white mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
-            Ready to Win Your Campaign?
-          </h2>
-          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
-            Join 500+ successful campaigns. Let's build your victory strategy together.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
-            <Button asChild size="lg" variant="secondary" className="text-lg px-8">
-              <a href="https://wa.me/917058253695">Contact Us on WhatsApp</a>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="text-lg px-8 border-white text-white hover:bg-white hover:text-primary bg-transparent"
-            >
-              <Link href="/packages">View Packages</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-    </main>
+      <Footer />
+    </div>
   )
 }

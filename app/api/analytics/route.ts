@@ -6,6 +6,7 @@ export async function GET(request: NextRequest) {
         const { searchParams } = new URL(request.url)
         const type = searchParams.get('type') // 'city', 'ward', 'party'
         const id = searchParams.get('id')
+        const partyId = searchParams.get('partyId') // NEW: Filter by party
 
         if (!type || !id) {
             return NextResponse.json(
@@ -42,37 +43,78 @@ export async function GET(request: NextRequest) {
                 )
             }
 
-            const totalRepresentatives = city.wards.reduce((sum, ward) => sum + ward.representatives.length, 0)
-            const activeProfiles = city.wards.reduce((sum, ward) =>
-                sum + ward.representatives.filter(rep => rep.socialProfiles.length > 0).length, 0
+            // Filter representatives by party if partyId is provided
+            let allRepresentatives: any[] = []
+            city.wards.forEach((ward: any) => {
+                const filteredReps = partyId
+                    ? ward.representatives.filter((rep: any) => rep.partyId === partyId)
+                    : ward.representatives
+                allRepresentatives.push(...filteredReps)
+            })
+
+            const totalRepresentatives = allRepresentatives.length
+            const activeProfiles = allRepresentatives.filter((rep: any) => rep.socialProfiles.length > 0).length
+            const totalFollowers = allRepresentatives.reduce((sum: number, rep: any) =>
+                sum + rep.socialProfiles.reduce((profSum: number, prof: any) => profSum + (prof.followers || 0), 0), 0
             )
-            const totalFollowers = city.wards.reduce((sum, ward) =>
-                sum + ward.representatives.reduce((repSum, rep) =>
-                    repSum + rep.socialProfiles.reduce((profSum, prof) => profSum + (prof.followers || 0), 0), 0
-                ), 0
-            )
-            const totalIssues = city.wards.reduce((sum, ward) => sum + ward.issues.length, 0)
+
+            // For party-specific view, only count issues in wards where the party has representatives
+            const relevantWards = partyId
+                ? city.wards.filter((ward: any) => ward.representatives.some((rep: any) => rep.partyId === partyId))
+                : city.wards
+            const totalIssues = relevantWards.reduce((sum: number, ward: any) => sum + ward.issues.length, 0)
 
             // Party breakdown
             const partyBreakdown: any = {}
-            city.wards.forEach(ward => {
-                ward.representatives.forEach(rep => {
-                    const partyName = rep.party.abbreviation
-                    if (!partyBreakdown[partyName]) {
-                        partyBreakdown[partyName] = {
-                            name: rep.party.name,
-                            abbreviation: partyName,
-                            count: 0,
-                            activeProfiles: 0,
-                            totalFollowers: 0
-                        }
+            allRepresentatives.forEach((rep: any) => {
+                const partyName = rep.party.abbreviation
+                if (!partyBreakdown[partyName]) {
+                    partyBreakdown[partyName] = {
+                        name: rep.party.name,
+                        abbreviation: partyName,
+                        count: 0,
+                        activeProfiles: 0,
+                        totalFollowers: 0
                     }
-                    partyBreakdown[partyName].count++
-                    if (rep.socialProfiles.length > 0) {
-                        partyBreakdown[partyName].activeProfiles++
-                    }
-                    partyBreakdown[partyName].totalFollowers += rep.socialProfiles.reduce((sum, prof) => sum + (prof.followers || 0), 0)
+                }
+                partyBreakdown[partyName].count++
+                if (rep.socialProfiles.length > 0) {
+                    partyBreakdown[partyName].activeProfiles++
+                }
+                partyBreakdown[partyName].totalFollowers += rep.socialProfiles.reduce((sum: number, prof: any) => sum + (prof.followers || 0), 0)
+            })
+
+            // Ward breakdown for Heatmap
+            const wardBreakdown = city.wards.map((ward: any) => {
+                const wardReps = partyId
+                    ? ward.representatives.filter((rep: any) => rep.partyId === partyId)
+                    : ward.representatives
+
+                const wardReach = wardReps.reduce((sum: number, rep: any) =>
+                    sum + rep.socialProfiles.reduce((pSum: number, p: any) => pSum + (p.followers || 0), 0), 0
+                )
+
+                const resolvedCount = ward.issues.filter((i: any) => i.status === 'resolved').length
+                const resolutionRate = ward.issues.length > 0 ? Math.round((resolvedCount / ward.issues.length) * 100) : 0
+
+                // Dominant party (by reach)
+                const partyReach: any = {}
+                ward.representatives.forEach((rep: any) => {
+                    const abbrev = rep.party.abbreviation
+                    const reach = rep.socialProfiles.reduce((pSum: number, p: any) => pSum + (p.followers || 0), 0)
+                    partyReach[abbrev] = (partyReach[abbrev] || 0) + reach
                 })
+                const dominantParty = Object.entries(partyReach).sort((a: any, b: any) => b[1] - a[1])[0]?.[0] || 'NONE'
+
+                return {
+                    id: ward.id,
+                    number: ward.wardNumber,
+                    name: ward.name,
+                    issues: ward.issues.length,
+                    reach: wardReach,
+                    resolutionRate,
+                    dominantParty
+                }
             })
 
             analytics = {
@@ -83,7 +125,9 @@ export async function GET(request: NextRequest) {
                 totalIssues,
                 digitalAdoption: totalRepresentatives > 0 ? Math.round((activeProfiles / totalRepresentatives) * 100) : 0,
                 avgFollowers: activeProfiles > 0 ? Math.round(totalFollowers / activeProfiles) : 0,
-                partyBreakdown: Object.values(partyBreakdown)
+                partyBreakdown: Object.values(partyBreakdown),
+                wardBreakdown,
+                filteredParty: partyId ? allRepresentatives[0]?.party?.abbreviation : null // Include party name if filtered
             }
         } else if (type === 'ward') {
             // Ward-level analytics
@@ -117,15 +161,15 @@ export async function GET(request: NextRequest) {
             }
 
             const totalRepresentatives = ward.representatives.length
-            const activeProfiles = ward.representatives.filter(rep => rep.socialProfiles.length > 0).length
-            const totalFollowers = ward.representatives.reduce((sum, rep) =>
-                sum + rep.socialProfiles.reduce((profSum, prof) => profSum + (prof.followers || 0), 0), 0
+            const activeProfiles = ward.representatives.filter((rep: any) => rep.socialProfiles.length > 0).length
+            const totalFollowers = ward.representatives.reduce((sum: number, rep: any) =>
+                sum + rep.socialProfiles.reduce((profSum: number, prof: any) => profSum + (prof.followers || 0), 0), 0
             )
 
             // Issue statistics
             const issuesByCategory: any = {}
             const issuesByStatus: any = {}
-            ward.issues.forEach(issue => {
+            ward.issues.forEach((issue: any) => {
                 issuesByCategory[issue.category] = (issuesByCategory[issue.category] || 0) + 1
                 issuesByStatus[issue.status] = (issuesByStatus[issue.status] || 0) + 1
             })
@@ -141,7 +185,7 @@ export async function GET(request: NextRequest) {
                 digitalAdoption: totalRepresentatives > 0 ? Math.round((activeProfiles / totalRepresentatives) * 100) : 0,
                 issuesByCategory,
                 issuesByStatus,
-                totalResponses: ward.representatives.reduce((sum, rep) => sum + rep.issueResponses.length, 0)
+                totalResponses: ward.representatives.reduce((sum: number, rep: any) => sum + rep.issueResponses.length, 0)
             }
         } else if (type === 'party') {
             // Party-level analytics
@@ -170,14 +214,14 @@ export async function GET(request: NextRequest) {
             }
 
             const totalRepresentatives = party.representatives.length
-            const activeProfiles = party.representatives.filter(rep => rep.socialProfiles.length > 0).length
-            const totalFollowers = party.representatives.reduce((sum, rep) =>
-                sum + rep.socialProfiles.reduce((profSum, prof) => profSum + (prof.followers || 0), 0), 0
+            const activeProfiles = party.representatives.filter((rep: any) => rep.socialProfiles.length > 0).length
+            const totalFollowers = party.representatives.reduce((sum: number, rep: any) =>
+                sum + rep.socialProfiles.reduce((profSum: number, prof: any) => profSum + (prof.followers || 0), 0), 0
             )
 
             // City breakdown
             const cityBreakdown: any = {}
-            party.representatives.forEach(rep => {
+            party.representatives.forEach((rep: any) => {
                 const cityName = rep.ward.city.name
                 if (!cityBreakdown[cityName]) {
                     cityBreakdown[cityName] = {
@@ -200,7 +244,7 @@ export async function GET(request: NextRequest) {
                 totalFollowers,
                 digitalAdoption: totalRepresentatives > 0 ? Math.round((activeProfiles / totalRepresentatives) * 100) : 0,
                 avgFollowers: activeProfiles > 0 ? Math.round(totalFollowers / activeProfiles) : 0,
-                totalResponses: party.representatives.reduce((sum, rep) => sum + rep.issueResponses.length, 0),
+                totalResponses: party.representatives.reduce((sum: number, rep: any) => sum + rep.issueResponses.length, 0),
                 cityBreakdown: Object.values(cityBreakdown)
             }
         }

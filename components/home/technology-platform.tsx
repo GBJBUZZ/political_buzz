@@ -64,8 +64,8 @@ export function TechnologyPlatform() {
               />
             </div>
 
-            {/* Mobile app preview */}
-            <div className="absolute -bottom-8 -right-8 w-48 rounded-xl overflow-hidden shadow-xl border-4 border-white">
+            {/* Mobile app preview - Hidden on mobile to prevent overflow */}
+            <div className="absolute -bottom-8 -right-8 w-48 rounded-xl overflow-hidden shadow-xl border-4 border-white hidden lg:block">
               <Image
                 src="/mobile-app-volunteer-tracking.jpg"
                 alt="Mobile App"
