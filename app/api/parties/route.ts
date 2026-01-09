@@ -4,9 +4,6 @@ import { prisma } from '@/lib/prisma'
 export async function GET(request: NextRequest) {
     try {
         const parties = await prisma.party.findMany({
-            orderBy: {
-                name: 'asc'
-            },
             include: {
                 _count: {
                     select: {
@@ -16,9 +13,27 @@ export async function GET(request: NextRequest) {
             }
         })
 
+        // Sort parties: BJP first, then INC, then others alphabetically
+        const sortedParties = parties.sort((a: any, b: any) => {
+            const priority: any = {
+                'BJP': 1,
+                'INC': 2
+            }
+
+            const aPriority = priority[a.abbreviation] || 999
+            const bPriority = priority[b.abbreviation] || 999
+
+            if (aPriority !== bPriority) {
+                return aPriority - bPriority
+            }
+
+            // If same priority (both are "others"), sort alphabetically
+            return a.name.localeCompare(b.name)
+        })
+
         return NextResponse.json({
             success: true,
-            data: parties
+            data: sortedParties
         })
     } catch (error) {
         console.error('Error fetching parties:', error)

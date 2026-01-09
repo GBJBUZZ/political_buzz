@@ -1,339 +1,149 @@
-import type { Metadata } from "next"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Check, ArrowRight, Star } from "lucide-react"
+"use client"
 
-export const metadata: Metadata = {
-  title: "Campaign Packages & Pricing | Political BuZZ - Transparent Election Campaign Costs",
-  description:
-    "Political BuZZ campaign packages: Nagar Parishad (₹16.8L - ₹28.9L) and Nagar Sevak (₹6.5L - ₹11.5L). Comprehensive election campaign services with transparent pricing.",
-  keywords:
-    "political campaign pricing, election campaign packages, Nagar Parishad campaign cost, ward member campaign, Maharashtra",
-}
+import { Check, Zap, Crown, Shield, ArrowRight, Star } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Header } from "@/components/header"
+import { Footer } from "@/components/footer"
+import Link from "next/link"
 
 export default function PackagesPage() {
-  const nagarParishadPlans = [
+  const packages = [
     {
-      name: "Basic Plan",
-      price: "₹16,83,695",
-      description: "Focused campaign with essential digital and ground coverage",
+      name: "WARD BASIC",
+      price: "Request Quote",
+      desc: "Ideal for first-time ward candidates looking to establish a digital presence.",
+      icon: Shield,
+      color: "text-slate-400",
+      bg: "bg-slate-50",
+      border: "border-slate-100",
+      btn: "outline",
       features: [
-        "200 Flyers & Graphics",
-        "120 Reels & Videos",
-        "80 PR Media Platforms",
-        "₹30L Digital Ads Budget",
-        "7L Mass Messages (IVR/SMS/WhatsApp)",
-        "GBJ Election App Access",
-        "2 Training Sessions",
-        "5 Professional Videos",
-        "Website & Hosting (3 Years)",
-        "Team Training & Support",
-      ],
-      popular: false,
+        "Profile Verification",
+        "Basic Social Media Setup",
+        "Ward Issue Tracking (Basic)",
+        "50,000 Voter Reach",
+        "Weekly Growth Reports",
+        "Email Support"
+      ]
     },
     {
-      name: "Advanced Plan",
-      price: "₹23,23,695",
-      description: "Extended coverage with enhanced media reach and team support",
-      features: [
-        "300 Flyers & Graphics",
-        "180 Reels & Videos",
-        "150 PR Media Platforms",
-        "₹30L Digital Ads Budget",
-        "10 Professional Videos",
-        "Expanded Team & Press Coverage",
-        "GBJ Election App & Dashboard",
-        "Enhanced Training Programs",
-        "Drone Coverage",
-        "Crisis Communication Support",
-        "Website & Hosting (3 Years)",
-        "24/7 War Room Support",
-      ],
+      name: "CAMPAIGN PRO",
+      price: "Best Value",
+      desc: "Comprehensive solution for serious candidates aiming for decisive victory.",
+      icon: Zap,
+      color: "text-blue-600",
+      bg: "bg-blue-50",
+      border: "border-blue-200",
+      btn: "default",
       popular: true,
+      features: [
+        "Total Dashboard Access",
+        "Premium Content Production",
+        "WhatsApp API Integration",
+        "Booth-Level Data Mapping",
+        "200,000+ Voter Reach",
+        "24/7 War Room Liaison",
+        "AI Sentiment Analysis"
+      ]
     },
     {
-      name: "Premium Plan",
-      price: "₹28,93,695",
-      description: "Mayor-level campaign with comprehensive coverage and elite PR",
+      name: "PARTY COMMAND",
+      price: "Elite Choice",
+      desc: "Designed for party leaders overseeing multiple wards/constituencies.",
+      icon: Crown,
+      color: "text-orange-600",
+      bg: "bg-orange-50",
+      border: "border-orange-200",
+      btn: "outline",
       features: [
-        "450 Flyers & Graphics",
-        "240+ Reels & Videos",
-        "250+ PR Media Platforms",
-        "18L Mass Messages",
-        "TV & Press Integration",
-        "10 Major Events Coverage",
-        "Elite PR Management",
-        "Documentary Film Production",
-        "Advanced Analytics Dashboard",
-        "Dedicated Campaign Manager",
-        "Website & Hosting (3 Years)",
-        "Full War Room Operations",
-      ],
-      popular: false,
-    },
-  ]
-
-  const nagarSevakPlans = [
-    {
-      name: "Basic Plan",
-      price: "₹6,50,000",
-      description: "Essential ward-level campaign for Nagar Sevak candidates",
-      features: [
-        "100 Flyers & Graphics",
-        "60 Reels & Videos",
-        "50 PR Media Platforms",
-        "3L Mass Messages",
-        "2 Professional Videos",
-        "GBJ Election App Access",
-        "Website & Hosting (3 Years)",
-        "Basic Training Session",
-        "Field Coordination Support",
-      ],
-      popular: false,
-    },
-    {
-      name: "Advanced Plan",
-      price: "₹8,50,000",
-      description: "Enhanced ward campaign with geo-targeted advertising",
-      features: [
-        "200 Flyers & Graphics",
-        "100 Reels & Videos",
-        "80 PR Media Platforms",
-        "5L Mass Messages",
-        "Geo-Targeted Digital Ads",
-        "5 Professional Videos",
-        "Drone Coverage",
-        "GBJ Election App & Dashboard",
-        "Enhanced Training Programs",
-        "Website & Hosting (3 Years)",
-        "Field Team Coordination",
-      ],
-      popular: true,
-    },
-    {
-      name: "Premium Plan",
-      price: "₹11,50,000",
-      description: "Comprehensive ward campaign with TV integration",
-      features: [
-        "300 Flyers & Graphics",
-        "150 Reels & Videos",
-        "100 PR Media Platforms",
-        "10L Mass Messages",
-        "TV Integration & Coverage",
-        "7 Professional Videos",
-        "Event Coverage & Management",
-        "Advanced Analytics Dashboard",
-        "Dedicated Field Coordinator",
-        "Website & Hosting (3 Years)",
-        "War Room Support",
-        "Crisis Management",
-      ],
-      popular: false,
-    },
+        "Cross-Ward Master Hub",
+        "Political Intelligence Network",
+        "Opposition Tracking (Premium)",
+        "1M+ Total Reach",
+        "Priority Resource Allocation",
+        "Direct Strategic Advisory",
+        "Legal & ECI Compliance Hub"
+      ]
+    }
   ]
 
   return (
-    <div className="min-h-screen bg-[#000629]">
-      {/* Hero Section */}
-      <section className="relative py-24 overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: "url('/blue-gradient-background.jpg')",
-            backgroundSize: "cover",
-          }}
-        />
-        <div className="container mx-auto px-4 max-w-[1200px] relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="font-heading font-bold text-5xl md:text-6xl text-white mb-6 leading-tight">
-              Campaign Packages & <span className="text-[#FFCF45]">Pricing</span>
-            </h1>
-            <p className="text-xl text-white/80 font-sans leading-relaxed mb-8">
-              Transparent, comprehensive pricing for Nagar Parishad and Nagar Sevak campaigns. Choose the package that
-              fits your campaign needs.
-            </p>
-          </div>
+    <div className="min-h-screen bg-white">
+      <Header />
+
+      <section className="pt-40 pb-24 bg-slate-50 relative overflow-hidden">
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <h1 className="text-5xl md:text-7xl font-black text-slate-900 mb-8 tracking-tighter">Strategic Packages.</h1>
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto font-bold uppercase text-[10px] tracking-[0.4em]">Investment Tiers for Nagpur Election Victory</p>
         </div>
+        {/* Background Pattern */}
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5" />
       </section>
 
-      {/* Nagar Parishad Plans */}
-      <section className="py-20 bg-white">
+      <section className="py-24">
         <div className="container mx-auto px-4 max-w-[1200px]">
-          <div className="text-center mb-16">
-            <h2 className="font-heading font-bold text-4xl text-[#000629] mb-4">Nagar Parishad Member Plans</h2>
-            <p className="text-lg text-gray-600 font-sans max-w-2xl mx-auto">
-              Comprehensive campaign packages for Municipal Council and Nagar Parishad elections.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {nagarParishadPlans.map((plan, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {packages.map((pkg, idx) => (
               <div
-                key={index}
-                className={`rounded-2xl overflow-hidden ${
-                  plan.popular
-                    ? "bg-gradient-to-b from-[#3377FF] to-[#000629] text-white shadow-2xl scale-105"
-                    : "bg-[#E1F2FE] text-[#000629]"
-                }`}
+                key={idx}
+                className={`relative flex flex-col p-10 rounded-[3rem] border-2 transition-all duration-500 hover:shadow-2xl hover:shadow-slate-200/50 ${pkg.border} ${pkg.popular ? 'scale-105 z-10 bg-white ring-8 ring-blue-50' : 'bg-white'}`}
               >
-                {plan.popular && (
-                  <div className="bg-[#FFCF45] text-[#000629] text-center py-2 font-ui font-bold text-sm">
-                    <Star className="inline h-4 w-4 mr-1" />
-                    MOST POPULAR
+                {pkg.popular && (
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-blue-600 text-white px-6 py-2 rounded-full text-[10px] font-black tracking-[0.2em] shadow-xl">
+                    MOST REPUTED
                   </div>
                 )}
-                <div className="p-8">
-                  <h3 className="font-heading font-bold text-2xl mb-2">{plan.name}</h3>
-                  <div className="font-heading font-bold text-4xl mb-4">{plan.price}</div>
-                  <p className={`text-sm mb-6 ${plan.popular ? "text-white/80" : "text-gray-600"}`}>
-                    {plan.description}
-                  </p>
 
-                  <ul className="space-y-3 mb-8">
-                    {plan.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-2 text-sm">
-                        <Check
-                          className={`h-5 w-5 flex-shrink-0 ${plan.popular ? "text-[#FFCF45]" : "text-[#3377FF]"}`}
-                        />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <Button
-                    asChild
-                    className={`w-full h-12 font-ui font-semibold ${
-                      plan.popular
-                        ? "bg-[#FFCF45] hover:bg-[#FFCF45]/90 text-[#000629]"
-                        : "bg-[#3377FF] hover:bg-[#3377FF]/90 text-white"
-                    }`}
-                  >
-                    <Link href="/contact">
-                      Request Proposal <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Nagar Sevak Plans */}
-      <section className="py-20 bg-[#0F1724]">
-        <div className="container mx-auto px-4 max-w-[1200px]">
-          <div className="text-center mb-16">
-            <h2 className="font-heading font-bold text-4xl text-white mb-4">Nagar Sevak (Ward Member) Plans</h2>
-            <p className="text-lg text-white/70 font-sans max-w-2xl mx-auto">
-              Targeted ward-level campaign packages for Municipal Ward Member elections.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {nagarSevakPlans.map((plan, index) => (
-              <div
-                key={index}
-                className={`rounded-2xl overflow-hidden ${
-                  plan.popular
-                    ? "bg-gradient-to-b from-[#FFCF45] to-[#72E9CD] text-[#000629] shadow-2xl scale-105"
-                    : "bg-white text-[#000629]"
-                }`}
-              >
-                {plan.popular && (
-                  <div className="bg-[#3377FF] text-white text-center py-2 font-ui font-bold text-sm">
-                    <Star className="inline h-4 w-4 mr-1" />
-                    RECOMMENDED
+                <div className="mb-8">
+                  <div className={`w-14 h-14 rounded-2xl ${pkg.bg} ${pkg.color} flex items-center justify-center mb-6`}>
+                    <pkg.icon className="h-7 w-7" />
                   </div>
-                )}
-                <div className="p-8">
-                  <h3 className="font-heading font-bold text-2xl mb-2">{plan.name}</h3>
-                  <div className="font-heading font-bold text-4xl mb-4">{plan.price}</div>
-                  <p className="text-sm text-gray-600 mb-6">{plan.description}</p>
-
-                  <ul className="space-y-3 mb-8">
-                    {plan.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-2 text-sm">
-                        <Check className="h-5 w-5 text-[#3377FF] flex-shrink-0" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <Button
-                    asChild
-                    className={`w-full h-12 font-ui font-semibold ${
-                      plan.popular
-                        ? "bg-[#3377FF] hover:bg-[#3377FF]/90 text-white"
-                        : "bg-[#FFCF45] hover:bg-[#FFCF45]/90 text-[#000629]"
-                    }`}
-                  >
-                    <Link href="/contact">
-                      Request Quote <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
+                  <h3 className="text-2xl font-black text-slate-900">{pkg.name}</h3>
+                  <p className="text-sm font-black text-blue-600 mt-1 uppercase tracking-widest">{pkg.price}</p>
                 </div>
+
+                <p className="text-slate-500 text-sm font-medium leading-relaxed mb-8">{pkg.desc}</p>
+
+                <div className="space-y-4 mb-10 flex-1">
+                  {pkg.features.map((feature, fIdx) => (
+                    <div key={fIdx} className="flex items-start gap-3">
+                      <div className="mt-1 bg-green-500/10 rounded-full p-0.5">
+                        <Check className="h-3 w-3 text-green-600" />
+                      </div>
+                      <span className="text-sm font-semibold text-slate-700">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <Button
+                  asChild
+                  variant={pkg.btn as any}
+                  className={`h-14 rounded-2xl font-black uppercase tracking-widest text-[10px] transition-all ${pkg.popular ? 'bg-blue-600 hover:bg-black text-white' : 'border-slate-200 text-slate-900'}`}
+                >
+                  <Link href="/contact" className="gap-2">
+                    GET STARTED
+                    <ArrowRight className="h-3 w-3" />
+                  </Link>
+                </Button>
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* All Plans Include */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 max-w-[1200px]">
-          <div className="text-center mb-12">
-            <h2 className="font-heading font-bold text-4xl text-[#000629] mb-4">All Plans Include</h2>
-            <p className="text-lg text-gray-600 font-sans">Standard features included in every package</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              "Website & Hosting (3 Years)",
-              "GBJ Election App & Data Dashboard",
-              "PR Media Cycle",
-              "Team Training & Reporting Support",
-              "Video Production & Branding",
-              "Field Coordination",
-              "Analytics & Reporting",
-              "Compliance Management",
-            ].map((feature, index) => (
-              <div key={index} className="bg-[#E1F2FE] rounded-lg p-6 text-center">
-                <Check className="h-8 w-8 text-[#3377FF] mx-auto mb-3" />
-                <p className="font-sans font-semibold text-[#000629]">{feature}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Custom Solutions */}
-      <section className="py-20 bg-[#3377FF]">
-        <div className="container mx-auto px-4 max-w-[1200px] text-center">
-          <h2 className="font-heading font-bold text-4xl text-white mb-6">Need a Custom Solution?</h2>
-          <p className="text-xl text-white/90 font-sans mb-8 max-w-2xl mx-auto">
-            We offer combo packages, multi-ward campaigns, and enterprise solutions tailored to your specific needs.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Button
-              asChild
-              size="lg"
-              className="bg-[#FFCF45] hover:bg-[#FFCF45]/90 text-[#000629] font-ui font-semibold h-14 px-12 text-lg"
-            >
-              <Link href="/contact">
-                Request Custom Quote <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
+          {/* Custom Package CTA */}
+          <div className="mt-24 p-12 bg-slate-900 rounded-[3.5rem] text-white flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
+            <div className="relative z-10">
+              <h3 className="text-3xl font-black mb-3">Custom Enterprise Deployment</h3>
+              <p className="text-slate-400 font-medium max-w-xl">Need a full constituency or city-wide digital infrastructure? We create custom private server deployments for major political parties.</p>
+            </div>
+            <Button asChild className="relative z-10 h-16 px-10 bg-white text-slate-900 hover:bg-blue-500 hover:text-white rounded-2xl font-black tracking-widest uppercase text-xs transition-all">
+              <Link href="/contact">Book Strategic Audit</Link>
             </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="border-2 border-white text-white hover:bg-white hover:text-[#3377FF] h-14 px-12 text-lg bg-transparent"
-            >
-              <a href="tel:7020107390">Call 7020107390</a>
-            </Button>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-[100px] -mr-32 -mt-32" />
           </div>
         </div>
       </section>
+
+      <Footer />
     </div>
   )
 }

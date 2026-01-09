@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { signIn } from 'next-auth/react'
 import { Button } from '@/components/ui/button'
 
 export default function SignupPage() {
@@ -11,13 +13,54 @@ export default function SignupPage() {
         phone: '',
         password: '',
         confirmPassword: '',
-        role: 'candidate'
+        role: 'citizen'
     })
+    const [error, setError] = useState('')
+    const [loading, setLoading] = useState(false)
+    const router = useRouter()
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
-        // Handle signup logic here
-        console.log('Signup:', formData)
+        setError('')
+
+        if (formData.password !== formData.confirmPassword) {
+            setError("Passwords do not match")
+            return
+        }
+
+        setLoading(true)
+
+        try {
+            const res = await fetch('/api/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            })
+
+            const data = await res.json()
+
+            if (!res.ok) {
+                setError(data.error || "Registration failed")
+            } else {
+                // Auto login after signup
+                const loginRes = await signIn('credentials', {
+                    email: formData.email,
+                    password: formData.password,
+                    redirect: false
+                })
+
+                if (loginRes?.error) {
+                    router.push('/login')
+                } else {
+                    router.push('/political-connect')
+                    router.refresh()
+                }
+            }
+        } catch (err) {
+            setError("Something went wrong")
+        } finally {
+            setLoading(false)
+        }
     }
 
     return (
@@ -40,6 +83,11 @@ export default function SignupPage() {
 
                     {/* Form */}
                     <form onSubmit={handleSubmit} className="space-y-6">
+                        {error && (
+                            <div className="bg-red-500/20 border border-red-500/50 p-4 rounded-xl text-red-200 text-sm font-bold">
+                                {error}
+                            </div>
+                        )}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label className="block text-sm font-semibold text-blue-300 mb-2">Full Name</label>
@@ -80,24 +128,23 @@ export default function SignupPage() {
 
                         <div>
                             <label className="block text-sm font-semibold text-blue-300 mb-2">I am a...</label>
-                            <div className="grid grid-cols-3 gap-4">
+                            <div className="grid grid-cols-2 gap-4">
                                 {[
-                                    { value: 'candidate', label: '🎯 Candidate', desc: 'Running for office' },
-                                    { value: 'party', label: '🏛️ Party', desc: 'Political organization' },
-                                    { value: 'volunteer', label: '🤝 Volunteer', desc: 'Campaign supporter' }
+                                    { value: 'citizen', label: '👥 Citizen', desc: 'Report & track issues' },
+                                    { value: 'representative', label: '🎯 Leader', desc: 'Respond & resolve issues' }
                                 ].map((role) => (
                                     <button
                                         key={role.value}
                                         type="button"
                                         onClick={() => setFormData({ ...formData, role: role.value })}
-                                        className={`p-4 rounded-xl border-2 transition-all ${formData.role === role.value
-                                                ? 'border-blue-500 bg-blue-500/20'
-                                                : 'border-blue-500/30 bg-slate-900/50 hover:border-blue-500/50'
+                                        className={`p-4 rounded-xl border-2 transition-all text-left ${formData.role === role.value
+                                            ? 'border-blue-500 bg-blue-500/20'
+                                            : 'border-blue-500/30 bg-slate-900/50 hover:border-blue-500/50'
                                             }`}
                                     >
                                         <div className="text-2xl mb-1">{role.label.split(' ')[0]}</div>
                                         <div className="text-white text-sm font-bold">{role.label.split(' ')[1]}</div>
-                                        <div className="text-blue-300 text-xs mt-1">{role.desc}</div>
+                                        <div className="text-blue-300 text-xs mt-1 leading-tight">{role.desc}</div>
                                     </button>
                                 ))}
                             </div>
@@ -145,9 +192,10 @@ export default function SignupPage() {
 
                         <Button
                             type="submit"
+                            disabled={loading}
                             className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-bold py-3 rounded-xl transition-all shadow-lg shadow-blue-500/50 hover:shadow-blue-500/70"
                         >
-                            Create Account
+                            {loading ? "Creating Account..." : "Create Account"}
                         </Button>
                     </form>
 

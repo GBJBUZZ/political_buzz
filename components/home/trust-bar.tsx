@@ -9,9 +9,9 @@ export function TrustBar() {
   ]
 
   return (
-    <section className="w-full h-[100px] bg-[#E1F2FE] flex items-center">
+    <section className="w-full min-h-[100px] bg-[#E1F2FE] flex items-center py-6 sm:py-0">
       <div className="container mx-auto px-4 max-w-[1200px]">
-        <div className="flex items-center justify-center md:justify-between gap-8 md:gap-12 flex-wrap">
+        <div className="flex items-center justify-center md:justify-between gap-6 sm:gap-12 flex-wrap">
           {partners.map((partner, index) => (
             <div
               key={index}

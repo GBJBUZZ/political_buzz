@@ -1,126 +1,145 @@
 "use client"
 
-import { useState } from 'react'
-import Link from 'next/link'
-import { Button } from '@/components/ui/button'
+import { useState } from "react"
+import { signIn } from "next-auth/react"
+import { useRouter, useSearchParams } from "next/navigation"
+import Link from "next/link"
+import { Shield, Lock, Mail, ArrowRight, Loader2, Sparkles } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 
 export default function LoginPage() {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const router = useRouter()
+    const searchParams = useSearchParams()
+    const callbackUrl = searchParams.get("callbackUrl") || "/"
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState<string | null>(null)
+    const [formData, setFormData] = useState({
+        email: "",
+        password: ""
+    })
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
-        // Handle login logic here
-        console.log('Login:', { email, password })
+        setIsLoading(true)
+        setError(null)
+
+        try {
+            const result = await signIn("credentials", {
+                email: formData.email,
+                password: formData.password,
+                redirect: false,
+            })
+
+            if (result?.error) {
+                setError("Invalid credentials. Please try again.")
+            } else {
+                router.push(callbackUrl)
+                router.refresh()
+            }
+        } catch (error) {
+            setError("An unexpected error occurred.")
+        } finally {
+            setIsLoading(false)
+        }
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 flex items-center justify-center px-4 py-12">
-            <div className="max-w-md w-full">
-                {/* Card */}
-                <div className="bg-slate-800/50 backdrop-blur-xl border border-blue-500/30 rounded-3xl p-8 shadow-2xl">
-                    {/* Header */}
-                    <div className="text-center mb-8">
-                        <div className="inline-block mb-4">
-                            <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto">
-                                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                                </svg>
-                            </div>
-                        </div>
-                        <h1 className="text-3xl font-black text-white mb-2">Welcome Back</h1>
-                        <p className="text-blue-300">Login to Political BuZZ Campaign Platform</p>
+        <div className="min-h-screen bg-[#000629] flex items-center justify-center p-4 relative overflow-hidden">
+            {/* Background Decorative Elements */}
+            <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-600/20 rounded-full blur-[120px]" />
+            <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-emerald-600/10 rounded-full blur-[120px]" />
+
+            <div className="w-full max-w-md relative z-10 animate-in fade-in zoom-in duration-500">
+                <div className="text-center mb-10">
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white shadow-2xl shadow-blue-500/20 mb-6">
+                        <Shield className="h-8 w-8" />
                     </div>
-
-                    {/* Form */}
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                        <div>
-                            <label className="block text-sm font-semibold text-blue-300 mb-2">Email Address</label>
-                            <input
-                                type="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                className="w-full px-4 py-3 bg-slate-900/50 border-2 border-blue-500/30 rounded-xl text-white placeholder-blue-300/50 focus:border-blue-500 focus:outline-none transition-colors"
-                                placeholder="your@email.com"
-                                required
-                            />
-                        </div>
-
-                        <div>
-                            <label className="block text-sm font-semibold text-blue-300 mb-2">Password</label>
-                            <input
-                                type="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                className="w-full px-4 py-3 bg-slate-900/50 border-2 border-blue-500/30 rounded-xl text-white placeholder-blue-300/50 focus:border-blue-500 focus:outline-none transition-colors"
-                                placeholder="••••••••"
-                                required
-                            />
-                        </div>
-
-                        <div className="flex items-center justify-between">
-                            <label className="flex items-center">
-                                <input type="checkbox" className="w-4 h-4 rounded border-blue-500/30 bg-slate-900/50 text-blue-600 focus:ring-blue-500" />
-                                <span className="ml-2 text-sm text-blue-300">Remember me</span>
-                            </label>
-                            <Link href="/forgot-password" className="text-sm text-blue-400 hover:text-blue-300">
-                                Forgot Password?
-                            </Link>
-                        </div>
-
-                        <Button
-                            type="submit"
-                            className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-bold py-3 rounded-xl transition-all shadow-lg shadow-blue-500/50 hover:shadow-blue-500/70"
-                        >
-                            Login to Dashboard
-                        </Button>
-                    </form>
-
-                    {/* Divider */}
-                    <div className="relative my-8">
-                        <div className="absolute inset-0 flex items-center">
-                            <div className="w-full border-t border-blue-500/30"></div>
-                        </div>
-                        <div className="relative flex justify-center text-sm">
-                            <span className="px-4 bg-slate-800/50 text-blue-300">Or continue with</span>
-                        </div>
-                    </div>
-
-                    {/* Social Login */}
-                    <div className="grid grid-cols-2 gap-4">
-                        <button className="flex items-center justify-center gap-2 px-4 py-3 bg-slate-900/50 border border-blue-500/30 rounded-xl text-white hover:bg-slate-900 transition-colors">
-                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
-                                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
-                                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05" />
-                                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
-                            </svg>
-                            Google
-                        </button>
-                        <button className="flex items-center justify-center gap-2 px-4 py-3 bg-slate-900/50 border border-blue-500/30 rounded-xl text-white hover:bg-slate-900 transition-colors">
-                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.99 22 12c0-5.523-4.477-10-10-10z" />
-                            </svg>
-                            Facebook
-                        </button>
-                    </div>
-
-                    {/* Sign Up Link */}
-                    <div className="mt-8 text-center">
-                        <p className="text-blue-300">
-                            Don't have an account?{' '}
-                            <Link href="/signup" className="text-blue-400 hover:text-blue-300 font-bold">
-                                Sign Up Free
-                            </Link>
-                        </p>
-                    </div>
+                    <h1 className="text-3xl font-black text-white tracking-tight mb-2">Welcome Back</h1>
+                    <p className="text-blue-200/60 font-bold uppercase text-[10px] tracking-[0.3em]">Access Your Command Center</p>
                 </div>
 
-                {/* Back to Home */}
-                <div className="mt-6 text-center">
-                    <Link href="/" className="text-blue-400 hover:text-blue-300 text-sm">
-                        ← Back to Home
-                    </Link>
+                <Card className="bg-white/5 border-white/10 backdrop-blur-xl shadow-2xl rounded-[2.5rem] overflow-hidden">
+                    <CardHeader className="pt-10 px-8 pb-4">
+                        <CardTitle className="text-white text-xl font-black">Sign In</CardTitle>
+                        <CardDescription className="text-blue-100/40 font-medium">Use your official credentials to continue.</CardDescription>
+                    </CardHeader>
+                    {error && (
+                        <div className="mx-8 mt-2 p-3 bg-red-500/20 border border-red-500/50 rounded-xl text-red-200 text-xs font-bold text-center">
+                            {error}
+                        </div>
+                    )}
+                    <CardContent className="px-8 pb-8 pt-4">
+                        <form onSubmit={handleSubmit} className="space-y-6">
+                            <div className="space-y-3">
+                                <Label className="text-blue-100/60 text-[10px] font-black uppercase tracking-widest ml-1">Email Address</Label>
+                                <div className="relative group">
+                                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-blue-400/50 group-focus-within:text-blue-400 transition-colors" />
+                                    <Input
+                                        type="email"
+                                        placeholder="name@official.com"
+                                        required
+                                        value={formData.email}
+                                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                        className="bg-white/5 border-white/10 focus:border-blue-500/50 text-white h-14 pl-12 rounded-2xl transition-all placeholder:text-blue-100/20"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="space-y-3">
+                                <div className="flex items-center justify-between ml-1">
+                                    <Label className="text-blue-100/60 text-[10px] font-black uppercase tracking-widest">Password</Label>
+                                    <Link href="/forgot-password" px-4 className="text-[10px] font-black text-blue-400 uppercase tracking-widest hover:text-blue-300">Forgot?</Link>
+                                </div>
+                                <div className="relative group">
+                                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-blue-400/50 group-focus-within:text-blue-400 transition-colors" />
+                                    <Input
+                                        type="password"
+                                        placeholder="••••••••"
+                                        required
+                                        value={formData.password}
+                                        onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                                        className="bg-white/5 border-white/10 focus:border-blue-500/50 text-white h-14 pl-12 rounded-2xl transition-all placeholder:text-blue-100/20"
+                                    />
+                                </div>
+                            </div>
+
+                            <Button
+                                type="submit"
+                                disabled={isLoading}
+                                className="w-full h-14 bg-blue-600 hover:bg-blue-700 text-white font-black rounded-2xl shadow-xl shadow-blue-600/20 group transition-all"
+                            >
+                                {isLoading ? (
+                                    <Loader2 className="h-5 w-5 animate-spin" />
+                                ) : (
+                                    <>
+                                        SECURE LOGIN
+                                        <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                                    </>
+                                )}
+                            </Button>
+                        </form>
+                    </CardContent>
+                    <CardFooter className="bg-white/5 px-8 py-6 border-t border-white/5 flex justify-center">
+                        <p className="text-sm text-blue-100/40 font-medium">
+                            First time here? <Link href="/signup" className="text-blue-400 font-bold hover:text-blue-300 ml-1">Create Account</Link>
+                        </p>
+                    </CardFooter>
+                </Card>
+
+                {/* Helper for demo */}
+                <div className="mt-8 p-6 bg-blue-600/10 border border-blue-500/20 rounded-3xl flex gap-4 items-start animate-in fade-in slide-in-from-bottom-2 duration-700 delay-300">
+                    <Sparkles className="h-5 w-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                    <div>
+                        <p className="text-[10px] font-black text-blue-400 uppercase tracking-[0.2em] mb-1">Demo Credentials</p>
+                        <p className="text-xs text-blue-100/60 leading-relaxed font-medium">
+                            Admin: admin@politicalconnect.com (adminpassword123)<br />
+                            Representative credentials can be claimed via the Political Connect hub.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
